@@ -1,0 +1,24 @@
+VIDEO 19--------------------------------------------------------------------------------------------------------
+[git diff <file>] -> este comando me sirve para ver cuales fueron las modificaciones que se hicieron
+[git diff --staged <file>] -> este comando me sirve para hacer una comparación y ver que fue lo que se modificó
+la diferencia es, que con la bandera --staged, me sirve para ver hacer la comparacion con los archivos que estan
+en el stage, ya que si se ejecuta el [git diff <file>] con los archivos ya subidos en el stage, no funcionará
+
+----------------------------------------------------------------------------------------------------------------
+
+VIDEO 20--------------------------------------------------------------------------------------------------------
+A veces, uno puede cometer errores al escribir un commit, y para cambiar el commit, podemos hacer lo siguiente.
+Hay varias formas, una forma fácil y una mas completa, la mas facil es la siguiente
+
+[git commit --amend -m "mensaje"] -> esta es la forma mas facil de hacerlo, modifica el ultimo commit hecho
+[git reset --soft HEAD^] -> este comando me ayuda a eliminar el último commit, ojo, el --soft es una bandera
+que me ayuda a eliminar el commit, hay otros, como el --hard, que ese si me elimina hasta los cambios, el
+"HEAD^" me indica que está apuntando al último commit, pero puede variar por las ramas (tambien se puede usar
+hash que aparece en el [git log]). El "^" indica que va a ir al último commit antes del Head, tambien podemos
+indicar el ID, podemos indicar que "HEAD^" sea "HEAD^2" el 2 me indica que va a ir al segundo commit y así 
+sucesivamente.
+
+(El git reset, solo funciona con los archivos que se le este dando seguimiento)
+No es recomendable hacer el reset a commits anteriores, o modificar commits anteriores, por que pueden causar
+conflictos graves
+----------------------------------------------------------------------------------------------------------------

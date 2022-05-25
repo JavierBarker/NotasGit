@@ -1,0 +1,133 @@
+VIDEO 7---------------------------------------------------------------------------------------------
+Cuando usamos el "--" es para indicar que vamos a usar la palabra completa (tambien se llaman banderas)
+si usamos solamente un guión "-" significa que solo vamos a usar una abreviación
+
+git --version
+git help
+
+ESTO ES LA PEQUEÑA CONFIGURACIÓN QUE SE TIENE QUE HACER
+git config --global user.name "JavierBarker" 
+git config --global user.email "hernandez.javier2003@gmail.com" -> el correo tiene que ser el mismo que se usa en github
+
+El correo sirve para que cuando hagamos un commit, se quede registrado quien fue el que hizo un cambio, ademas
+que sirve para cuando estes subiendo cambios en la nube (ya sea github u otra plataforma), haga autenticación
+y pueda dejar mandar el commit
+
+
+
+"git config --global -e" -> este comando es para ver la configuracíon, el correo, el usuario y otras cosas, para 
+poder insertar o modificar algo, solamente tienen que presionar la tecla "a" o "i" y pueden modificar el 
+contenido y para salir, solamente le damos en "Esc" y luego ":wq!". "w" para escribir, "q" para salir y nos 
+saca de ese menu.
+---------------------------------------------------------------------------------------------------------------
+
+VIDEO 8--------------------------------------------------------------------------------------------------------
+
+[git init] -> este comando inicializa un repositorio
+
+Si se elimina el directorio ".git" automaticamente se eliminará el repositorio o causará daños en el repositorio
+
+[git status] -> este comando me va a dar información relacionada al commit o rama en la que me este ubicado
+[git add <nameFile>] -> este comando me sirve para poder agregar los archivos y poder hacer el commit
+[git add .] -> este comando me sirve para poder agregar todos los archivos y hacer el commit
+[git reset <nameFile>] -> este comando me sirve para poder remover un archivo del stage
+[git commit -m "mensaje"] -> este comando me sirve para poder agregar un commit con un mensaje
+---------------------------------------------------------------------------------------------------------------
+
+VIDEO 10-------------------------------------------------------------------------------------------------------
+[git checkout -- .] -> este comando reconstruye el proyecto a como estaba en el ultimo commit
+
+El --  es la forma en que le dices a Git, que trate el checkout como un archivo y no como una rama. 
+Supongamos que tienes tanto una rama y un archivo llamado algo , el siguiente comando sería ambiguo 
+
+[git checkout algo]
+
+Y podríamos confundirnos en cosas como
+
+[git checkout algo]       # checkout a la rama algo
+[git checkout -- algo]    # checkout al archivo algo
+Pero también es necesario porque en algunos Unix, para indicar que el siguiente comando no es un argumento.
+
+IMPORTANTE = El comando solo sirve para los archivos que Git le esta dando seguimiento, no funciona con archivos
+que son agregados
+---------------------------------------------------------------------------------------------------------------
+
+REPASO----------------------------------------------------------------------
+commit -> Foto = Snapshot
+proyecto = repositorio
+----------------------------------------------------------------------------
+
+VIDEO 12-------------------------------------------------------------------------------------------------------
+
+[git branch] -> este comando me lista las ramas y me indica en que rama estoy trabajando
+
+a diferencia del [git status], es que [git status] me muestra mas información de la rama, los archivos modificados
+etc.
+
+En la rama master tiene que ir el proyecto final
+
+[git branch -m <NombreDeLaRama> <NuevoNombreParaLaRama>] -> el "-m" me sirve para poder cambiar el nombre de una
+rama, se pone el nombre de la rama y despues al lado se pone el nombre nuevo para esa rama
+
+[git config --global init.defaultBranch <name>] -> este comando me sirve para indicar que al momento de iniciar 
+un repositorio la rama principal se llame por el nombre que indiquemos
+
+---------------------------------------------------------------------------------------------------------------
+
+VIDEO 13-------------------------------------------------------------------------------------------------------
+El archivo "README.md" es un archivo especial con la extención .md que significa "MarkDown", que es muy util al
+momento de subir el repositorio a GitHub u a otra plataforma ya que en estos archivos puedo colocar cierta 
+información, dicha información es formateada al html y lo pueden ver otras personas para ver el contenido del 
+repositorio.
+
+[git commit -am "mensaje"] -> al agregar el "-am" significa que voy a agregar el archivo y tambien voy escribir
+un mensaje en el commit, este comando solo sirve si ya le estoy dando seguimiento a los archivos, si el archivo
+estuviera en Untrack, no funcionaria el comando
+
+[git log] -> este comando me sirve para ver el historial de commits hechos, los commits estan ordenados del mas
+reciente al mas antiguo
+---------------------------------------------------------------------------------------------------------------
+
+VIDEO 15-------------------------------------------------------------------------------------------------------
+Hay ocaciones en la cual, es necesario que uno agregue archivos de un tipo de extención o agregue ciertos 
+archivos primero, como hacer un commit de todos los archivos html, o todos los archivos de javaScript, etc. 
+una opcion seria hacer un [git add a.html b.html] escribir uno por uno los archivos, pero sería bastante 
+tardado, entonces para eso se usan ciertos comodines o wild cards, como los siguiente.
+
+[git add *.html] -> el ".html" pueden ser cambiados por otros, como ".js (de JavaScript), .py (de Python), etc."
+[git add directorio/*.extencion] -> en directorio colocamos la carpeta en donde esten los archivos, y en 
+extención podemos agregar el .html, .js, etc.
+
+Al momento de crear una carpeta nueva (un directorio) en mi proyecto, si no tiene un archivo o algo, git no le 
+va a dar seguimiento a menos que se grabe un archivo dentro de la carpeta. Hay proyectos en la cual tiene un 
+directorio que se llama "uploads" u otro nombre, y esas carpetas son importantes ya que van a tener todos los
+archivos que los usuarios cargan al sitio web, y como git no reconoce carpetas (directorios) vacías, no sube 
+la carpeta y ahí causa algún conflicto, y para resolver ese problema, se agrega el archivo ".gitkeep", este 
+archivo le indica a git que mantenga la carpeta y que la reconozca, el archivo pesa casi 0 bits 
+
+---------------------------------------------------------------------------------------------------------------
+
+VIDEO 16-------------------------------------------------------------------------------------------------------
+[git add folder/] -> el la parte del "folder" va el nombre de la carpeta que queremos agregar, por que puede que
+esa carpeta tenga un archivo pero tambien subcarpetas y esas otras carpetas y así sucesivamente, y puede ser 
+tedioso, y este comando me resume eso 
+---------------------------------------------------------------------------------------------------------------
+
+VIDEO 17-------------------------------------------------------------------------------------------------------
+[git status --short] -> esto me ayuda a ver el status pero de manera resumida por el "--short"
+
+A veces, los comandos pueden extenderse y ser demasiado largos a lo que mucha gente opta por los alias
+[git config --global alias.s "status --short"] -> este comando me ayuda a agregar un alias, el 
+"git config --global" me indica que estamos en la cofiguración global, el "alias" me indica que vamos a agregar
+un alias, el ".s" me indica el nombre del alias (puede ser una 'a', una 'b', cualquier letra),
+el '"status --short"' en las comillas vamos a colocar el comando que queramos para el alias, en el ejemplo,
+indicamos que la letra "s" va a ser el "status --short" para que al momento de ejecutarlo sea asi
+
+de [git status --short] -> [git s]
+
+[git log --oneline] -> este comando me va a listar los commits pero de una forma resumida
+
+https://gist.github.com/Klerith/0acf18bbece7923bcac55edb71b03c2b -> este material me puede servir
+
+
+---------------------------------------------------------------------------------------------------------------
